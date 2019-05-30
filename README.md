@@ -16,7 +16,7 @@ Install [Software Collections](https://www.softwarecollections.org/en/) Develope
 
 This module will enable the Software Collections repository and
 install the specified the version or versions of the Development Tools
-package. Versions of the Development Tools that are not specified are
+package. Versions of the Developer Tools that are not specified are
 removed.
 
 Currently only CentOS 6 and 7 platforms are under development. RedHat
@@ -26,21 +26,21 @@ Workstation support will follow.
 
 ### Beginning with scldevtoolset
 
-The default configuration installs version 8 of the Development Tools:
+The default configuration installs version 8 of the Developer Tools:
 ```
 include scldevtoolset
 ```
 
 ## Usage
 
-Install version 7 of the [Development Tools](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7):
+Install version 7 of the [Developer Tools](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7):
 ```
 class { 'scldevtoolset':
   versions => [7]
 }
 ```
 
-Install versions 6, 7, and 8 of the Development Tools:
+Install versions 6, 7, and 8 of the Developer Tools:
 ```
 class { 'scldevtoolset':
   versions => [6, 7, 8]
