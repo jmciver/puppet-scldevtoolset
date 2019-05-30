@@ -29,6 +29,11 @@ group :development do
   gem "puppet-module-win-dev-r#{minor_version}",       require: false, platforms: [:mswin, :mingw, :x64_mingw]
 end
 
+group :system_tests do
+  gem "puppet-module-posix-system-r#{minor_version}",  require: false
+  gem "beaker-hostgenerator",                          require: false, git: 'https://github.com/mcanevet/beaker-hostgenerator.git', branch: 'fix_debian9'
+end
+
 puppet_version = ENV['PUPPET_GEM_VERSION']
 facter_version = ENV['FACTER_GEM_VERSION']
 hiera_version = ENV['HIERA_GEM_VERSION']
