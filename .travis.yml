@@ -83,12 +83,11 @@ matrix:
       bundler_args:
       script: bundle exec rspec spec/acceptance/*_spec.rb
     -
-      env: DEPLOY_TO_FORGE=no
+      env: DEPLOY_TO_FORGE=yes
       stage: deploy
 branches:
   only:
     - master
-    - development_ci
     - /^v\d/
 notifications:
   email: false
