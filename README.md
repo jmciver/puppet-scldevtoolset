@@ -1,5 +1,7 @@
 # Software Collections Developer Toolset
 
+[![Build Status](https://img.shields.io/travis/jmciver/puppet-scldevtoolset/master.svg)](https://travis-ci.org/jmciver/puppet-scldevtoolset)
+
 Install [Software Collections](https://www.softwarecollections.org/en/) Developer Toolset packages.
 
 #### Table of Contents
@@ -15,7 +17,7 @@ Install [Software Collections](https://www.softwarecollections.org/en/) Develope
 ## Description
 
 This module will enable the Software Collections repository and
-install the specified the version or versions of the Development Tools
+install the specified version or versions of the Development Tools
 package. Versions of the Developer Tools that are not specified are
 removed.
 
