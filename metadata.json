@@ -1,18 +1,20 @@
 {
   "name": "jmciver-scldevtoolset",
   "version": "0.1.0",
-  "author": "John K. McIver III",
-  "summary": "",
+  "author": "jmciver",
+  "summary": "Install Software Collections Developer Toolset Module",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/jmciver/puppet-scldevtoolset",
+  "issues_url": "https://github.com/jmciver/puppet-scldevtoolset/issues",
   "dependencies": [
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 5.0.0 < 10.0.0" }
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 5.0.0 < 7.0.0" }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6", "7"
+        "6",
+        "7"
       ]
     }
     // },
