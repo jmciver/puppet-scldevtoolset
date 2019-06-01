@@ -1,6 +1,6 @@
 # Software Collections Developer Toolset
 
-[![Build Status](https://img.shields.io/travis/jmciver/puppet-scldevtoolset/master.svg)](https://travis-ci.org/jmciver/puppet-scldevtoolset)
+[![Build Status](https://img.shields.io/travis/jmciver/puppet-scldevtoolset/master.svg)](https://travis-ci.com/jmciver/puppet-scldevtoolset)
 
 Install [Software Collections](https://www.softwarecollections.org/en/) Developer Toolset packages.
 
