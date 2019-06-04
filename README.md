@@ -7,6 +7,7 @@ Install [Software Collections](https://www.softwarecollections.org/en/) Develope
 #### Table of Contents
 
 1. [Description](#description)
+    * [Supported Operating Systems](#supported-operating-systems)
 2. [Setup - the basics of getting started with scldevtoolset](#setup)
     * [Beginning with scldevtoolset](#beginning-with-scldevtoolset)
 3. [Usage - Configuration options](#usage)
@@ -21,8 +22,15 @@ install the specified version or versions of the Development Tools
 package. Versions of the Developer Tools that are not specified are
 removed.
 
-Currently only CentOS 6 and 7 platforms are under development. RedHat
-Workstation support will follow.
+### Supported Operating Systems
+
+Currently only CentOS 6 and 7 platforms are supported. RedHat
+Workstation support is currently under development.
+
+|            | **6**  | **7**  |
+|:---        | :----: | :----: |
+| **CentOS** | Yes    | Yes    |
+| **RHEL**   | No     | No     |
 
 ## Setup
 
