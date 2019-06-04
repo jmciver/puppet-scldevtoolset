@@ -93,7 +93,7 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: puppet
+  user: jmciver
   password:
     secure: "kzk63095x+lR6fSffpUHsqi60QUSZtpt3lN1Y1YX4mkGNY3AL8/THQrOFWvyHNNxDupjxb3l0xQCulzLRLe9rD+uXFLnTHVS3pwYf+YZ9rL48bcGNO5I3wLXzAEsV4amb95xJ5V32bsSFDK+k1bUJT4Fmi/n0OMDcnbslbC5hCXaYgL1xWndBvLYQQVxoXY8ZT1d6SyjELnmRLsx0CmVolsddcRkRtwJTsj4uWNtXJju0SVgQPiM7nM17KV9WWRhhuV5S5pgWJGiLDHEyTWGkcXeF9TXcGZngK/aw7G6jqJZk7ThAT/vSNSpD5JaAwQK80yt8ojyoCNaoGmC5lUOycaXyxu5RLRaN+LXmSfOP2R+dCnJ0p9GAML3y72P/I6CMPwp2H+CpUsdRsgG3abFLguIdMiZ3MNeDosP5v1gCIseiHpHVdO0MOxyQbkso/f+n1mNpijY+iqnbdr+9yRy9iSVxDo29CHF97aoUTMyWQgWTNBaK/AKq8UfDXSGFVXVwGXqpOPoyMnVDqsC/+PVYjgJu6LNAot8NR+IfNgsWFOg2FRWjqdlsVKZfyITH+QC39q/yyJc2hdUChxc5p67z7T3eZ91AiwLSnrRfYcKcWC1VCsawTofrVWNS7/BwTPIigoFzw8brcXK1Lx3LO60ro0MGrxCpy+tNeaoZ1aQNu4="
   on:
