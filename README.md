@@ -11,6 +11,7 @@ Install [Software Collections](https://www.softwarecollections.org/en/) Develope
 2. [Setup - the basics of getting started with scldevtoolset](#setup)
     * [Beginning with scldevtoolset](#beginning-with-scldevtoolset)
 3. [Usage - Configuration options](#usage)
+    * [YAML](#yaml)
 4. [Limitations - OS compatibility, etc.](#limitations)
 5. [Development - Guide for contributing to the module](#development)
 6. [License - Where and how this module can be used](#license)
@@ -20,7 +21,7 @@ Install [Software Collections](https://www.softwarecollections.org/en/) Develope
 This module will enable the Software Collections repository and
 install the specified version or versions of the Development Tools
 package. Versions of the Developer Tools that are not specified are
-removed.
+removed. YAML configuration is supported.
 
 ### Supported Operating Systems
 
@@ -55,6 +56,22 @@ Install versions 6, 7, and 8 of the Developer Tools:
 class { 'scldevtoolset':
   versions => [6, 7, 8]
 }
+```
+
+### YAML
+
+Install version 7 of the Developer Tools:
+```
+scldevtoolset::versions:
+  - 7
+```
+
+Install versions 6, 7, and 8 of the Developer Tools:
+```
+scldevtoolset::versions:
+  - 6
+  - 7
+  - 8
 ```
 
 ## Limitations
