@@ -2,8 +2,8 @@
 # Toolset
 class scldevtoolset::params {
 
-  $min_version = 3
-  $max_version = 8
+  $min_version = 7
+  $max_version = 9
 
   case $facts['os']['name'] {
     'CentOS': {
