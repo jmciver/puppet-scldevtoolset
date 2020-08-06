@@ -39,7 +39,6 @@ jobs:
       rvm: 2.5.7
       stage: spec
     -
-      sudo: required
       services: docker
       env:
         - PUPPET_INSTALL_TYPE=agent
@@ -51,7 +50,6 @@ jobs:
       bundler_args:
       script: bundle exec rspec spec/acceptance/init_spec.rb
     -
-      sudo: required
       services: docker
       env:
         - PUPPET_INSTALL_TYPE=agent
@@ -63,7 +61,6 @@ jobs:
       bundler_args:
       script: bundle exec rspec spec/acceptance/init_spec.rb
     -
-      sudo: required
       services: docker
       env:
         - PUPPET_INSTALL_TYPE=agent
@@ -75,7 +72,6 @@ jobs:
       bundler_args:
       script: bundle exec rspec spec/acceptance/init_spec.rb
     -
-      sudo: required
       services: docker
       env:
         - PUPPET_INSTALL_TYPE=agent
@@ -98,7 +94,7 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: jmciver
+  username: jmciver
   password:
     secure: "NZNWcr9fEwziBYeKd2gcJficDrpT5xgayKNFsRvA10CjUSC2enDT5Mzh7n5rmoxYKk1ep44gki7I0LwcPwXaOB/yVZEmGkAv+dkXra28ppo2OUCDGW517PangAhoLa3Al6ldTNByD4UQRbw9YhBVaFA7ADJjt2VptJyk2SSYSK/lbdz1l1qcv+7/71bDwtlwz7GxxUJpL/CE5FxqlhtsotR9mOBAnlYPSuym7xyDvYZU/XdGyRQDpBHEBFOHr4uP7hqOXhlEkCSmnJD/vxCWVhtdApBm2uyODt4soPopY7XtDvt5nj2lpk6VK4q5tX9Q3XxDTTKz/C6xwTiU9dUG5TXT3ihtaganGR/FExdaOE9ETnvz05nkRehGwnCNoDZg+Uz8CLJ3xNuFdWen/n9PLUnMEq1hcTJJnUBaj0hf7+t+qZMUGBkfPnYA87FPpJgmRG5n0P2Si+kfHrLYEtMNcyi1Azo9cFZy4NfFgPy7muMFnXwGyZCjsHYXIKEfMcu6ZqsZdzx+FoJJAT4e7QofmvPAspxv1ix22ruwZv2fW/tD0Bs0nF7Fjv4o/wAOoaXKsE0PDTGQUfKD9wJJWWNSDKNcKSwD1gk1wrTe4Uw+VseX+34uqU2mNMoS/pyP7ahnJyyof9XgXNnvVnmrBQSgZ36G8Mfb7ZoyPu7Q6UgTu/Y="
   on:
