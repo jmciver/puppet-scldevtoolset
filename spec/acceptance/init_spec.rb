@@ -12,14 +12,8 @@ describe 'scldevtoolset class' do
       apply_manifest(pp, catch_changes: true)
     end
 
-    describe package('devtoolset-8') do
+    describe package('devtoolset-9') do
       it { is_expected.to be_installed }
-    end
-
-    [7, 9].each do |version|
-      describe package("devtoolset-#{version}") do
-        it { is_expected.not_to be_installed }
-      end
     end
   end
 
@@ -39,12 +33,6 @@ describe 'scldevtoolset class' do
         it { is_expected.to be_installed }
       end
     end
-
-    [9].each do |version|
-      describe package("devtoolset-#{version}") do
-        it { is_expected.not_to be_installed }
-      end
-    end
   end
 
   context 'versions = [9]' do
@@ -61,12 +49,6 @@ describe 'scldevtoolset class' do
     [9].each do |version|
       describe package("devtoolset-#{version}") do
         it { is_expected.to be_installed }
-      end
-    end
-
-    [7, 8].each do |version|
-      describe package("devtoolset-#{version}") do
-        it { is_expected.not_to be_installed }
       end
     end
   end

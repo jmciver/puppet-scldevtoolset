@@ -13,12 +13,9 @@ describe 'scldevtoolset' do
         it {
           is_expected.to contain_package('centos-release-scl')
             .with_ensure('present')
-            .that_comes_before(['Package[devtoolset-8]'])
+            .that_comes_before(['Package[devtoolset-9]'])
         }
-        it { is_expected.to contain_package('devtoolset-8').only_with_ensure('present') }
-        [7, 9].each do |version|
-          it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('absent') }
-        end
+        it { is_expected.to contain_package('devtoolset-9').only_with_ensure('present') }
       end
 
       context 'version = [8]' do
@@ -32,9 +29,6 @@ describe 'scldevtoolset' do
             .that_comes_before(['Package[devtoolset-8]'])
         }
         it { is_expected.to contain_package('devtoolset-8').only_with_ensure('present') }
-        [7, 9].each do |version|
-          it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('absent') }
-        end
       end
 
       context 'version = [7, 8, 9]' do
