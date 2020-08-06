@@ -16,7 +16,7 @@ describe 'scldevtoolset' do
             .that_comes_before(['Package[devtoolset-8]'])
         }
         it { is_expected.to contain_package('devtoolset-8').only_with_ensure('present') }
-        Array(3..7).each do |version|
+        [7, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('absent') }
         end
       end
@@ -32,13 +32,13 @@ describe 'scldevtoolset' do
             .that_comes_before(['Package[devtoolset-8]'])
         }
         it { is_expected.to contain_package('devtoolset-8').only_with_ensure('present') }
-        Array(3..7).each do |version|
+        [7, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('absent') }
         end
       end
 
-      context 'version = [6, 7, 8]' do
-        let(:params) { { 'versions' => [6, 7, 8] } }
+      context 'version = [7, 8, 9]' do
+        let(:params) { { 'versions' => [7, 8, 9] } }
 
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
@@ -47,17 +47,14 @@ describe 'scldevtoolset' do
             .with_ensure('present')
             .that_comes_before(
               [
-                'Package[devtoolset-6]',
                 'Package[devtoolset-7]',
                 'Package[devtoolset-8]',
+                'Package[devtoolset-9]',
               ],
             )
         }
-        Array(6..8).each do |version|
+        [7, 8, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
-        end
-        Array(3..5).each do |version|
-          it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('absent') }
         end
       end
     end
