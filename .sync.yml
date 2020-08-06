@@ -1,0 +1,13 @@
+---
+Gemfile:
+  required:
+    ':development':
+      - gem: 'beaker-docker'
+      - gem: 'beaker-module_install_helper'
+      - gem: 'beaker-pe'
+      - gem: 'beaker-puppet_install_helper'
+      - gem: 'beaker-rspec'
+      - gem: 'beaker-task_helper'
+.gitignore:
+  required:
+    - '*~'
