@@ -7,36 +7,36 @@ describe 'scldevtoolset' do
         facts
       end
 
-      context 'versions parameter is not specified' do
+      context 'versions argument is not specified' do
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
-        it {
+        it do
           is_expected.to contain_package('centos-release-scl')
             .with_ensure('present')
             .that_comes_before(['Package[devtoolset-9]'])
-        }
+        end
         it { is_expected.to contain_package('devtoolset-9').only_with_ensure('present') }
       end
 
-      context 'version = [8]' do
+      context 'versions = [8]' do
         let(:params) { { 'versions' => [8] } }
 
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
-        it {
+        it do
           is_expected.to contain_package('centos-release-scl')
             .with_ensure('present')
             .that_comes_before(['Package[devtoolset-8]'])
-        }
+        end
         it { is_expected.to contain_package('devtoolset-8').only_with_ensure('present') }
       end
 
-      context 'version = [7, 8, 9]' do
+      context 'versions = [7, 8, 9]' do
         let(:params) { { 'versions' => [7, 8, 9] } }
 
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
-        it {
+        it do
           is_expected.to contain_package('centos-release-scl')
             .with_ensure('present')
             .that_comes_before(
@@ -46,13 +46,13 @@ describe 'scldevtoolset' do
                 'Package[devtoolset-9]',
               ],
             )
-        }
+        end
         [7, 8, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
         end
       end
 
-      context 'version = [7, 8, 9] with modules' do
+      context 'versions = [7, 8, 9] with environment modules' do
         let(:params) do
           { 'versions' => [7, 8, 9],
             'use_modules' => true,
@@ -61,7 +61,7 @@ describe 'scldevtoolset' do
 
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
-        it {
+        it do
           is_expected.to contain_package('centos-release-scl')
             .with_ensure('present')
             .that_comes_before(
@@ -71,7 +71,7 @@ describe 'scldevtoolset' do
                 'Package[devtoolset-9]',
               ],
             )
-        }
+        end
         [7, 8, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
           it do
