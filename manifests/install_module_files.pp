@@ -11,8 +11,8 @@
 
 class scldevtoolset::install_module_files (
   Array[Integer] $versions,
-  Boolean $install_environment_modules = false,
   String $environment_module_package,
+  Boolean $install_environment_modules = false,
   String $base_module_path = '/etc/modulefiles',
   String $scl_devtoolset_module_dir = 'scl-devtools',
   String $scl_devtoolset_base_dir = '/opt/rh',
@@ -23,7 +23,7 @@ class scldevtoolset::install_module_files (
       ensure => present,
     }
   }
-  
+
   $full_scl_devtoolset_path = "${base_module_path}/${scl_devtoolset_module_dir}"
 
   file { $full_scl_devtoolset_path:
