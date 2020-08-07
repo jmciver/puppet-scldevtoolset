@@ -7,7 +7,7 @@ describe 'scldevtoolset' do
         facts
       end
 
-      context 'version parameter is not specified' do
+      context 'versions parameter is not specified' do
         it { is_expected.to compile }
         it { is_expected.to compile.with_all_deps }
         it {
@@ -52,7 +52,7 @@ describe 'scldevtoolset' do
         end
       end
 
-      context 'version = [7, 8, 9] and modules' do
+      context 'version = [7, 8, 9] with modules' do
         let(:params) do
           { 'versions' => [7, 8, 9],
             'use_modules' => true,
@@ -74,6 +74,29 @@ describe 'scldevtoolset' do
         }
         [7, 8, 9].each do |version|
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
+          it do
+            is_expected.to contain_file("/etc/modulefiles/scl-devtools/#{version}")
+              .with('ensure' => 'link')
+              .that_requires('File[/etc/modulefiles/scl-devtools/.base]')
+          end
+        end
+        it do
+          is_expected.to contain_file('/etc/modulefiles/scl-devtools')
+            .with(
+              'ensure' => 'directory',
+              'owner'  => 'root',
+              'group'  => 'root',
+              'mode'   => '0744',
+            ).that_requires('Package[environment-modules]')
+        end
+        it do
+          is_expected.to contain_file('/etc/modulefiles/scl-devtools/.base')
+            .with(
+              'ensure' => 'file',
+              'owner'  => 'root',
+              'group'  => 'root',
+              'mode'   => '0444',
+            ).that_requires('File[/etc/modulefiles/scl-devtools]')
         end
       end
     end
