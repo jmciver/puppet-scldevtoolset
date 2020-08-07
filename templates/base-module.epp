@@ -1,0 +1,62 @@
+#%Module 1.0
+
+proc ModulesHelp { } {
+    puts stderr "\tLoads a specific version of Development Toolset\n"
+}
+
+proc check_and_set_environment_variable { name } {
+  if { ! [info exists ::env($name)] } {
+    setenv "$name" ""
+  }
+}
+
+proc library_path_32 { rpmlibdir root_path } {
+    regsub "lib64" "$rpmlibdir" "" rpmlibdir_cmp
+    if {[string compare "$rpmlibdir" "$rpmlibdir_cmp"] != 0} {
+        regsub "lib64" "$rpmlibdir" "lib" rpmlibdir32
+        return "${root_path}${rpmlibdir32}"
+    } else {
+        return ""
+    }
+}
+
+module-whatis "Loads a specific version of Development Toolset"
+
+set version \
+    [lindex \
+	 [split [ module-info name ] "/"] \
+	 [llength [ module-info name ] ] ]
+
+set development_tools_path <%= $scldevtoolset::install_module_files::scl_devtoolset_base_dir %>/devtoolset-${version}/root
+
+prepend-path PATH "${development_tools_path}/usr/bin"
+
+check_and_set_environment_variable MANPATH
+prepend-path MANPATH "${development_tools_path}/usr/share/man"
+
+check_and_set_environment_variable INFOPATH
+prepend-path INFOPATH "${development_tools_path}/usr/share/info"
+
+setenv PCP_DIR "${development_tools_path}"
+
+check_and_set_environment_variable PKC_CONFIG_PATH
+prepend-path PKG_CONFIG_PATH "${development_tools_path}/usr/lib64/pkgconfig"
+
+set rpmlibdir [exec rpm --eval "%{_libdir}"]
+set rpmlibdir32 [library_path_32 "$rpmlibdir" "${development_tools_path}"]
+
+check_and_set_environment_variable LD_LIBRARY_PATH
+if { [string length "$rpmlibdir32"] != 0 } {
+    prepend-path LD_LIBRARY_PATH "$rpmlibdir32"
+}
+prepend-path LD_LIBRARY_PATH "${development_tools_path}${rpmlibdir}"
+
+if { [string length "$rpmlibdir32"] != 0 } {
+    prepend-path LD_LIBRARY_PATH "${rpmlibdir32}/dynist"
+}
+prepend-path LD_LIBRARY_PATH "${development_tools_path}${rpmlibdir}/dynist"
+
+if { [string length "$rpmlibdir32"] != 0 } {
+    prepend-path LD_LIBRARY_PATH "$rpmlibdir32"
+}
+prepend-path LD_LIBRARY_PATH "${development_tools_path}${rpmlibdir}"

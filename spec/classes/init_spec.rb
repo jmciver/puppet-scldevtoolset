@@ -51,6 +51,30 @@ describe 'scldevtoolset' do
           it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
         end
       end
+
+      context 'version = [7, 8, 9] and modules' do
+        let(:params) {
+          { 'versions' => [7, 8, 9],
+            'use_modules' => true,
+            'install_environment_modules' => true } }
+
+        it { is_expected.to compile }
+        it { is_expected.to compile.with_all_deps }
+        it {
+          is_expected.to contain_package('centos-release-scl')
+            .with_ensure('present')
+            .that_comes_before(
+              [
+                'Package[devtoolset-7]',
+                'Package[devtoolset-8]',
+                'Package[devtoolset-9]',
+              ],
+            )
+        }
+        [7, 8, 9].each do |version|
+          it { is_expected.to contain_package("devtoolset-#{version}").only_with_ensure('present') }
+        end
+      end
     end
   end
 end
