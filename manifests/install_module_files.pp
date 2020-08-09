@@ -1,13 +1,21 @@
-# @summary Install system modules for Devloper Toolset versions
+# @summary Install system modules for Developer Toolset versions
 #
-# @param versions all Devleoper Toolset version to generate modules for
+# @param versions Developer Toolset version to generate environment
+#   modules for
 #
-# @param environment_module_package name of environment modules package
+# @param environment_module_package name of environment modules
+#   package
+#
+# @param install_environment_module if true install package defined by
+#   environment_module_package
 #
 # @param base_module_path base modulefiles directory on system
 #
 # @param scl_devtoolset_module_dir directory under base_module_path
 #    which will contain all Development Toolset version modules
+#
+# @param scl_devtoolset_base_dir default install location of the
+#   Developer Toolset packages
 
 class scldevtoolset::install_module_files (
   Array[Integer] $versions,

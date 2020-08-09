@@ -1,4 +1,15 @@
-# Manage the installation of Red Hat Developer Toolset
+# @summary Manage the installation of Red Hat Developer Toolset
+#
+# @param array Developer Toolset versions to install
+#
+# @param scl_package_name Software Collections package name
+#
+# @param use_modules if set to true installs associated environment
+#   module for each Developer Tools set version specified
+#
+# @param install_environment_modules install the environment-modules
+#  system package
+
 class scldevtoolset(
   Array[Integer] $versions,
   String $scl_package_name,
