@@ -59,9 +59,9 @@ describe 'scldevtoolset class' do
     it 'verify multiple version install' do
       pp = <<-EOS
         class { 'scldevtoolset':
-          versions => [7, 8, 9],
-          use_modules => true,
-          install_environment_modules => true,
+          versions                => [7, 8, 9],
+          use_modules             => true,
+          install_modules_package => true,
         }
       EOS
 
@@ -107,10 +107,10 @@ describe 'scldevtoolset class' do
         }
 
         class { 'scldevtoolset':
-          versions => [7, 8, 9],
-          use_modules => true,
-          install_environment_modules => false,
-          require => Package['environment-modules'],
+          versions                => [7, 8, 9],
+          use_modules             => true,
+          install_modules_package => false,
+          require                 => Package['environment-modules'],
         }
       EOS
 

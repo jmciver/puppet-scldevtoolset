@@ -56,7 +56,7 @@ describe 'scldevtoolset' do
         let(:params) do
           { 'versions' => [7, 8, 9],
             'use_modules' => true,
-            'install_environment_modules' => true }
+            'install_modules_package' => true }
         end
 
         it { is_expected.to compile }

@@ -7,14 +7,14 @@
 # @param use_modules if set to true installs associated environment
 #   module for each Developer Tools set version specified
 #
-# @param install_environment_modules install the environment-modules
+# @param install_modules_package install the environment-modules
 #  system package
 
 class scldevtoolset(
   Array[Integer] $versions,
   String $scl_package_name,
   Boolean $use_modules = false,
-  Boolean $install_environment_modules = false,
+  Boolean $install_modules_package = false,
 ) {
 
   $packages_to_install = $versions.map |$x| { "devtoolset-${x}" }
@@ -35,8 +35,8 @@ class scldevtoolset(
 
   if $use_modules {
     class { 'scldevtoolset::install_module_files':
-      versions                    => $versions,
-      install_environment_modules => $install_environment_modules,
+      versions                => $versions,
+      install_modules_package => $install_modules_package,
     }
   }
 

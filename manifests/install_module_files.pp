@@ -6,7 +6,7 @@
 # @param environment_module_package name of environment modules
 #   package
 #
-# @param install_environment_module if true install package defined by
+# @param install_modules_package if true install package defined by
 #   environment_module_package
 #
 # @param base_module_path base modulefiles directory on system
@@ -20,13 +20,13 @@
 class scldevtoolset::install_module_files (
   Array[Integer] $versions,
   String $environment_module_package,
-  Boolean $install_environment_modules = false,
+  Boolean $install_modules_package = false,
   String $base_module_path = '/etc/modulefiles',
   String $scl_devtoolset_module_dir = 'scl-devtools',
   String $scl_devtoolset_base_dir = '/opt/rh',
 ) {
 
-  if $install_environment_modules {
+  if $install_modules_package {
     package { $environment_module_package:
       ensure => present,
     }
