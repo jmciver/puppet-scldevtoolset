@@ -28,50 +28,68 @@ removed. YAML configuration is supported.
 Currently only CentOS 6 and 7 platforms are supported. RedHat
 Workstation support is currently under development.
 
-|            | **6**  | **7**  |
-|:---        | :----: | :----: |
-| **CentOS** | Yes    | Yes    |
-| **RHEL**   | No     | No     |
+|            | **6**  | **7**  | **8**  |
+|:---        | :----: | :----: | :----: |
+| **CentOS** | Yes    | Yes    | NA     |
+| **RHEL**   | No     | No     | NA     |
 
 ## Setup
 
 ### Beginning with scldevtoolset
 
-The default configuration installs version 8 of the Developer Tools:
+The default configuration installs version 9 of the Developer Tools:
 ```
 include scldevtoolset
 ```
 
 ## Usage
 
-Install version 7 of the [Developer Tools](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7):
+Install version 8 of the [Developer Tools](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-8):
 ```
 class { 'scldevtoolset':
-  versions => [7]
+  versions => [8]
 }
 ```
 
-Install versions 6, 7, and 8 of the Developer Tools:
+Install versions 7, 8, and 9 of the Developer Tools:
 ```
 class { 'scldevtoolset':
-  versions => [6, 7, 8]
+  versions => [7, 8, 9]
 }
 ```
+
+Install version 9 of and supporting environment module:
+```
+class { 'scldevtoolset':
+  versions    => [9],
+  use_modules => true,
+}
+```
+
+The environment-module system package can installed by setting the
+`install_modules_package` parameter to true.
 
 ### YAML
 
-Install version 7 of the Developer Tools:
+Install version 8 of the Developer Tools:
 ```
 scldevtoolset::versions:
-  - 7
+  - 8
 ```
 
-Install versions 6, 7, and 8 of the Developer Tools:
+Install versions 7, 8, and 9 of the Developer Tools:
 ```
 scldevtoolset::versions:
-  - 6
   - 7
   - 8
+  - 9
+```
+
+Install version 9 of and supporting environment module:
+```
+scldevtoolset::versions:
+  - 9
+scldevtoolset::use_modules: true
 ```
 
 ## Limitations
