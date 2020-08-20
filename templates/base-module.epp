@@ -42,7 +42,7 @@ setenv PCP_DIR "${development_tools_path}"
 check_and_set_environment_variable PKC_CONFIG_PATH
 prepend-path PKG_CONFIG_PATH "${development_tools_path}/usr/lib64/pkgconfig"
 
-set rpmlibdir [exec /usr/bin/rpm --eval "%{_libdir}"]
+set rpmlibdir [exec rpm --eval "%{_libdir}"]
 set rpmlibdir32 [library_path_32 "$rpmlibdir" "${development_tools_path}"]
 
 check_and_set_environment_variable LD_LIBRARY_PATH
