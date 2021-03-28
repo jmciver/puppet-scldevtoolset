@@ -2,39 +2,35 @@
 
 name: CI
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master, development_ci ]
   pull_request:
     branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  baseqa:
+   spec:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        check: [parallel_spec, 'syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop']
+        ruby_version: [2.4.x, 2.5.x]
+        puppet_gem_version: [~> 5.0, ~> 6.0]
+        exclude:
+        - puppet_gem_version: ~> 5.0
+          check: 'syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop'
+        - ruby_version: 2.4.x
+          puppet_gem_version: ~> 6.0
+        - ruby_version: 2.5.x
+          puppet_gem_version: ~> 5.0
     steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.7'
-          bundler-cache: true
-      - name: Basic Quality Tests
-        run: bundle exec rake check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint
-  unittest5:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.4.5'
-          bundler-cache: true
-      - name: Basic unittest
-        run: bundle exec rake parallel_spec
-        env:
-          PUPPET_GEM_VERSION: "~> 5.0"
+    - uses: actions/checkout@v1
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby_version: ${{matrix.ruby_version}}
+    - name: Spec Tests
+      uses: puppetlabs/action-litmus_spec@master
+      with:
+        puppet_gem_version: ${{ matrix.puppet_gem_version }}
+        check: ${{ matrix.check }}
