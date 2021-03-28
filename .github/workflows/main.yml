@@ -16,18 +16,25 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  unittest:
-    # The type of runner that the job will run on
+  baseqa:
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
           bundler-cache: true
+      - name: Basic Quality Tests
+        run: bundle exec rake check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint
+  unittest5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.4.5'
+          bundler-cache: true
       - name: Basic unittest
-        run: |
-          bundle exec rake check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint
-          bundle exec rake parallel_spec
+        run: bundle exec rake parallel_spec
+        env:
+          PUPPET_GEM_VERSION: "~> 5.0"
