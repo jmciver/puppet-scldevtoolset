@@ -25,8 +25,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-	  ruby-version: '2.7'
-	  bundler-cache: true
+          ruby-version: '2.7'
+          bundler-cache: true
       - name: Basic unittest
         run: |
           bundle exec rake "check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint"
