@@ -30,3 +30,4 @@ jobs:
       - name: Basic unittest
         run: |
           bundle exec rake check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint
+          parallel_spec
